@@ -1,48 +1,24 @@
-# Cast Iron
+# Cast Iron 
+## Postgres Recipe
 
-The platform-agnostic data storage and ETL system leveraging MinIO and other tools to enable mission endstates.
+This is an example of how to incorporate Cast-Iron into your existing project that is making use of Postgres. 
 
-## Basics
+### Cast-Iron Integration
+This assumes that your existing project contains docker images and is brought up through the use of a 
+docker-compose file. A `Makefile` has been created here to help in the coordination of multiple docker-compose files
+and ensuring that everything is brought up and down in the right order. 
 
-This project provides an example environment using [MinIO] to create a basic, cloud-agnostic ETL system.
+#### docker-compose.yml
+This is your projects docker-compose and there shouldn't need to be any changes to it. 
 
-Main Parts of the system include:
-* Object Storage ([AWS S3], [MinIO], etc.)
-* Message Queue ([Kafka], [Nats], etc.)
-* Worker ([Celery], [Faust], etc.)
-* ETL (Bash Scripts, Python)
-* Database ([MS SQL], [MySQL], [PostgreSQL], [SQLite], etc.)
+#### Makefile
+This creates the commands for calling multiple `docker-compose` files at once. Make sure to update this to call
+your original projects docker-compose in addition to the cast-iron docker-compose file so that both come up when
+`make up` is run. 
 
-## Architecture
-
-![architecture](diagrams/cast-iron-architecture-diagram.png)
-
-## Getting Started
-
-* Install [Docker]
-* Run the docker compose
-```bash
-$ docker-compose up
-```
-
-Once started, the following areas are accessible:
-* MinIO at localhost:9000
-* PostgreSQL
-    * User: castiron
-    * Password: castiron
-    * Host: localhost
-    * Port: 5432
-    * Database: castiron
-
-
-[AWS S3]: https://aws.amazon.com/s3/
-[Celery]: https://docs.celeryproject.org/en/stable/index.html
-[Docker]: https://www.docker.com/
-[Faust]: https://faust.readthedocs.io/en/latest/index.html
-[Kafka]: https://kafka.apache.org/
-[MinIO]: https://min.io/
-[MySQL]: https://www.mysql.com/
-[Nats]: https://nats.io/
-[PostgreSQL]: https://www.postgresql.org/
-[SQLite]: https://www.sqlite.org/index.html
-[MS SQL]: https://www.microsoft.com/en-us/sql-server
+### Getting Started
+#### Steps Already Completed in this Project
+* Bring in the Git Submodule by running:   
+`git submodule add git@github.com:black-cape/cast-iron-docker-compose.git`
+  * For more information on git submodules see: https://git-scm.com/book/en/v2/Git-Tools-Submodules
+  
