@@ -1,3 +1,4 @@
 [submodule "cast-iron-docker-compose"]
 	path = cast-iron-docker-compose
 	url = git@github.com:black-cape/cast-iron-docker-compose.git
+	branch = main
