@@ -24,20 +24,20 @@ setup: ## Run the create/setup scripts
 
 up: ## Start all service and storage containers
 	make print-gateway-host
-	docker-compose -f docker-compose.yml -f cast-iron-docker-compose/docker-compose.cast-iron.yml up -d --build
+	docker-compose -f docker-compose.yml -f cast-iron/docker-compose.yml up -d --build
 	make setup
 
 down: ## Stop all containers
 	make print-gateway-host
-	docker-compose -f docker-compose.yml -f cast-iron-docker-compose/docker-compose.cast-iron.yml down
+	docker-compose -f docker-compose.yml -f cast-iron/docker-compose.yml down
 
 remake: ## Tear down and rebuild containers
 	make print-gateway-host
-	docker-compose -f docker-compose.yml -f cast-iron-docker-compose/docker-compose.cast-iron.yml down -v
-	docker-compose -f docker-compose.yml -f cast-iron-docker-compose/docker-compose.cast-iron.yml build --no-cache --force-rm
-	docker-compose -f docker-compose.yml -f cast-iron-docker-compose/docker-compose.cast-iron.yml up -d
+	docker-compose -f docker-compose.yml -f cast-iron/docker-compose.yml down -v
+	docker-compose -f docker-compose.yml -f cast-iron/docker-compose.yml build --no-cache --force-rm
+	docker-compose -f docker-compose.yml -f cast-iron/docker-compose.yml up -d
 	make setup
 
 restart: ## Restart all services and graph containers
-	docker-compose -f docker-compose.yml -f cast-iron-docker-compose/docker-compose.cast-iron.yml restart
+	docker-compose -f docker-compose.yml -f cast-iron/docker-compose.yml restart
 
